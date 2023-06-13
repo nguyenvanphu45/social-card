@@ -1,9 +1,5 @@
 const initState = {
     search: '',
-    comments: [
-        'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
-        'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
-    ],
     cards: [
         {
             id: 1,
@@ -12,6 +8,10 @@ const initState = {
             description:
                 'Playlist này bài nào cũng rất hay nhưng ít được mọi người biết đến mong mọi người có thể dành chút thời',
             image: 'https://catscanman.net/wp-content/uploads/2023/02/meme-buon-ngu-2.png',
+            comments: [
+                'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
+                'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+            ],
         },
         {
             id: 2,
@@ -20,6 +20,10 @@ const initState = {
             description:
                 'Lập một form để tạo mới 1 Social Card , trong card sẽ chứa các thông tin: Avatar, Name, Description, Image',
             image: 'https://tiengdong.com/wp-content/uploads/www_tiengdong_com-anh-che-chao-ngay-moi.jpg',
+            comments: [
+                'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
+                'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+            ],
         },
         {
             id: 3,
@@ -28,6 +32,10 @@ const initState = {
             description:
                 'Next, you select one property. It doesn’t matter which one you choose, yet it’s best to pick one that seems totally unrelated to your challenge. ',
             image: 'https://hatrabbits.com/wp-content/uploads/2017/01/random-word-1.jpg',
+            comments: [
+                'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
+                'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+            ],
         },
     ],
 };
@@ -46,20 +54,20 @@ const rootReducer = (state = initState, action) => {
                 cards: state.cards.map((card) => {
                     if (card.id === action.payload.id) {
                         return {
-                            ...action.payload
+                            ...action.payload,
                         };
                     } else {
                         return card;
                     }
-                })
+                }),
             };
 
-        case 'cards/deleteCard': 
+        case 'cards/deleteCard':
             return {
                 ...state,
                 undo: [...state.cards],
                 cards: state.cards.filter((card) => {
-                    return card.id !== action.id
+                    return card.id !== action.id;
                 }),
             };
 
@@ -67,18 +75,27 @@ const rootReducer = (state = initState, action) => {
             if (state.undo) {
                 return {
                     ...state,
-                    cards: [...state.undo]
-                }
-            } else{
+                    cards: [...state.undo],
+                };
+            } else {
                 return {
-                    ...state
-                }
+                    ...state,
+                };
             }
 
-        case 'comment/commentText':
+        case 'cards/comment':
             return {
                 ...state,
-                comments: [...state.comments, action.payload],
+                cards: state.cards.map((card) => {
+                    if (card.id === action.id) {
+                        return {
+                            ...card,
+                            comments: [ ...card.comments , action.payload],
+                        };
+                    } else {
+                        return card;
+                    }
+                })
             };
 
         case 'search/searchName':

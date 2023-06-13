@@ -32,10 +32,10 @@ export const searchName = (text) => {
     };
 };
 
-export const commentText = (text) => {
-    console.log(text)
+export const commentText = ({id}, text) => {
     return {
-        type: 'comment/commentText',
+        type: 'cards/comment',
+        id: id,
         payload: text
     }
 }

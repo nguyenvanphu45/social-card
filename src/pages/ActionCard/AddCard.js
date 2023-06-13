@@ -32,6 +32,7 @@ function AddCard() {
                     name: name,
                     description: description,
                     image: image ? image.preview : undefined,
+                    comments: ['']
                 }),
             );
             toast.success('Add card success!!', {

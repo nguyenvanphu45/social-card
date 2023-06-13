@@ -3,7 +3,7 @@ import styles from './Detail.module.scss';
 import classNames from 'classnames/bind';
 import { AiFillHeart, AiOutlineComment } from 'react-icons/ai';
 import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { commentText } from '~/redux/actions';
 
 const cx = classNames.bind(styles);
@@ -15,7 +15,6 @@ function Detail() {
     const cardLocation = location.state.cardList;
 
     const dispatch = useDispatch();
-    const commentLists = useSelector((state) => state.comments);
 
     const handleCountHeart = () => {
         setCountHeart(countHeart + 1);
@@ -23,12 +22,19 @@ function Detail() {
 
     const handlePost = () => {
         if (comment === '') return;
-        dispatch(commentText(comment));
+        dispatch(
+            commentText(
+                {
+                    id: cardLocation.id,
+                },
+                comment,
+            ),
+        );
 
         setComment('');
     };
 
-    console.log(commentLists);
+    const cardComments = cardLocation.comments;
 
     return (
         <div className={cx('container')}>
@@ -56,7 +62,7 @@ function Detail() {
                     </div>
                     <div className={cx('icon')}>
                         <AiOutlineComment />
-                        <span>{commentLists.length}</span>
+                        <span>{cardComments.length}</span>
                     </div>
                 </div>
                 <div className={cx('comments')}>
@@ -64,11 +70,11 @@ function Detail() {
                         <textarea rows="5" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
                         <button onClick={handlePost}>Post</button>
                     </div>
-                    {commentLists.map((commentList) => {
+                    {cardComments.map((cardComment) => {
                         return (
-                            <div className={cx('comment')}>
+                            <div className={cx('comment')} key={cardComment}>
                                 <p>22/04/2022</p>
-                                <p>{commentList}</p>
+                                <p>{cardComment}</p>
                             </div>
                         );
                     })}
