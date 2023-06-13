@@ -1,0 +1,33 @@
+@use '../../scss/' as *;
+
+.card {
+    // max-width: $width-card;
+    height: $height-card;
+    border-radius: $border-radius-1;
+    box-shadow: $box-shadow;
+    padding: 2rem 3rem;
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+
+        .right {
+            display: flex;
+            gap: 1rem;
+
+            .edit {
+                color: $main-color;
+            }
+
+            .remove {
+                color: red;
+            }
+
+            button {
+                &:hover {
+                    opacity: .6;  
+                }
+            }
+        }
+    }
+}

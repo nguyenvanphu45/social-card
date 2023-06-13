@@ -1,0 +1,56 @@
+@use '../../scss/' as *;
+
+.container {
+    padding: 20px 80px;
+    
+    .header {
+        text-align: center;
+    }
+
+    .button {
+        padding-top: 2rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1.6rem;
+        position: relative;
+
+        button {
+            padding: 1.2rem 2rem;
+            color: $white-txt-color;
+            border-radius: $border-radius-2;
+            box-shadow: $box-shadow;
+        }
+
+        .revert {
+            background-color: #f1b44c;
+        }
+
+        .add {
+            background-color: $main-color;
+        }
+
+        input {
+            width: 30rem;
+            border: 1px solid $grey-bg-color;
+            outline: none;
+            border-radius: $border-radius-2;
+            box-shadow: $box-shadow;
+            padding: 0 1.4rem;
+        }
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            right: 1.4rem;
+            color: $grey-bg-color;
+            font-size: 2rem;
+        }
+    }
+
+    .cards {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: $width-card $width-card $width-card;
+        gap: 3rem 2.5rem;
+    }
+}
