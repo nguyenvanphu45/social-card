@@ -16,7 +16,6 @@ function Detail() {
 
     const dispatch = useDispatch();
     const commentLists = useSelector((state) => state.comments);
-    // const commentListReverse = commentLists.reverse();
 
     const handleCountHeart = () => {
         setCountHeart(countHeart + 1);
@@ -29,7 +28,7 @@ function Detail() {
         setComment('');
     };
 
-    console.log(commentLists.reverse());
+    console.log(commentLists);
 
     return (
         <div className={cx('container')}>
