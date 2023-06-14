@@ -12,6 +12,7 @@ function App() {
                     <Route path="" Component={Home} />
                     <Route path="/add" Component={AddCard} />
                     <Route path="/detail/:id" Component={Detail} />
+                    <Route path="/detail/:id" Component={Detail} />
                     <Route path="/edit/:id" Component={EditCard} />
                 </Routes>
             </div>

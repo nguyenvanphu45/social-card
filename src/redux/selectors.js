@@ -12,7 +12,6 @@ export const cardsRemainingSelector = createSelector(
     searchSelector,
     undoSelector,
     (cards, search, undo) => {
-        console.log(cards)
         return cards.filter((card) => {
             return card.name.toLowerCase().includes(search);
         });

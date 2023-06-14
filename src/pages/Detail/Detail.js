@@ -35,7 +35,6 @@ function Detail() {
     };
 
     const cardComments = cardLocation.comments;
-    console.log(cardComments)
 
     return (
         <div className={cx('container')}>
