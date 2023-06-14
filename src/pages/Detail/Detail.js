@@ -3,7 +3,7 @@ import styles from './Detail.module.scss';
 import classNames from 'classnames/bind';
 import { AiFillHeart, AiOutlineComment } from 'react-icons/ai';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { commentText } from '~/redux/actions';
 
 const cx = classNames.bind(styles);
@@ -35,6 +35,7 @@ function Detail() {
     };
 
     const cardComments = cardLocation.comments;
+    console.log(cardComments)
 
     return (
         <div className={cx('container')}>

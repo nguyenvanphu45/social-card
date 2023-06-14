@@ -5,11 +5,12 @@ import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '~/redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function Card({ id, avatar, name, description, image }) {
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleRemove = (e) => {
@@ -17,6 +18,11 @@ function Card({ id, avatar, name, description, image }) {
         dispatch(
             deleteCard({id: id})
         )
+    }
+
+    const handleEdit = (e) => {
+        e.preventDefault()
+        navigate(`/edit/${id}`, { state: { id, avatar, name, description, image } });
     }
 
     return (
@@ -32,10 +38,10 @@ function Card({ id, avatar, name, description, image }) {
                     </div>
                 </div>
                 <div className={cx('right')}>
-                    <button>
-                        <Link to={`/edit/${id}`} state={{ id, avatar, name, description, image }}>
+                    <button onClick={handleEdit}>
+                        {/* <Link to={`/edit/${id}`} state={{ id, avatar, name, description, image }}> */}
                             <FaPencilAlt className={cx('edit')} />
-                        </Link>
+                        {/* </Link> */}
                     </button>
                     <button onClick={handleRemove}>
                         <FaTrash className={cx('remove')} />

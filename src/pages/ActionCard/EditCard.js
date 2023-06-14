@@ -16,7 +16,6 @@ function EditCard() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState();
-    const [error, setError] = useState(false);
 
     const location = useLocation();
     const cardLocation = location.state;
