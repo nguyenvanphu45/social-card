@@ -22,8 +22,8 @@ function Home() {
     };
 
     const handleUndoDelete = () => {
-        dispatch(undoDelete())
-    }
+        dispatch(undoDelete());
+    };
 
     return (
         <div className={cx('container')}>
@@ -40,14 +40,8 @@ function Home() {
             </div>
             <div className={cx('cards')}>
                 {cardLists.map((cardList) => (
-                    <Link to={`/detail/${cardList.id}`} state={{ cardList }} key={cardList.id}>
-                        <Card
-                            id={cardList.id}
-                            avatar={cardList.avatar}
-                            name={cardList.name}
-                            description={cardList.description}
-                            image={cardList.image}
-                        />
+                    <Link to={`/detail/${cardList.id}`} key={cardList.id}>
+                        <Card cardList={cardList} />
                     </Link>
                 ))}
             </div>

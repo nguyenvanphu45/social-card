@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FaUpload } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { updateCard } from '~/redux/actions';
+import { resetCard, updateCard } from '~/redux/actions';
 import { Link, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -18,7 +18,7 @@ function EditCard() {
     const [image, setImage] = useState();
 
     const location = useLocation();
-    const cardLocation = location.state;
+    const cardLocation = location.state.cardList;
 
     const dispatch = useDispatch();
 
@@ -43,8 +43,10 @@ function EditCard() {
                 name: name ? name : cardLocation.name,
                 description: description ? description : cardLocation.description,
                 image: image ? image.preview : cardLocation.image,
+                comments: cardLocation.comments,
             }),
         );
+        console.log(cardLocation);
         toast.success('Update success!!', {
             position: 'top-center',
             autoClose: 3000,
@@ -57,7 +59,10 @@ function EditCard() {
         });
     };
 
-    console.log(avatar)
+    // const handleReset = (e) => {
+    //     e.preventDefault();
+    //     dispatch(resetCard())
+    // }
 
     return (
         <div className={cx('add')}>
@@ -65,7 +70,7 @@ function EditCard() {
                 <div className={cx('title')}>
                     <h1>EDIT CARD</h1>
                 </div>
-                <form onSubmit={handleEdit}>
+                <form>
                     <div className={cx('form')}>
                         <div className={cx('upload')}>
                             <label>Avatar</label>
@@ -109,7 +114,11 @@ function EditCard() {
                         </div>
                     </div>
                     <div className={cx('btn')}>
-                        <button className={cx('save')}>
+                        {/* <button className={cx('save')} onClick={handleReset}>
+                            Reset
+                            <ToastContainer />
+                        </button> */}
+                        <button className={cx('save')} onClick={handleEdit}>
                             Update
                             <ToastContainer />
                         </button>

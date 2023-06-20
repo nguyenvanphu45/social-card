@@ -9,8 +9,17 @@ const initState = {
                 'Playlist này bài nào cũng rất hay nhưng ít được mọi người biết đến mong mọi người có thể dành chút thời',
             image: 'https://catscanman.net/wp-content/uploads/2023/02/meme-buon-ngu-2.png',
             comments: [
-                'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
-                'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+                {
+                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    comment:
+                        'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
+                },
+                {
+                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    comment:
+                        'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+                },
+                //
             ],
         },
         {
@@ -21,8 +30,16 @@ const initState = {
                 'Lập một form để tạo mới 1 Social Card , trong card sẽ chứa các thông tin: Avatar, Name, Description, Image',
             image: 'https://tiengdong.com/wp-content/uploads/www_tiengdong_com-anh-che-chao-ngay-moi.jpg',
             comments: [
-                'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
-                'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+                {
+                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    comment:
+                        'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
+                },
+                {
+                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    comment:
+                        'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+                },
             ],
         },
         {
@@ -33,8 +50,16 @@ const initState = {
                 'Next, you select one property. It doesn’t matter which one you choose, yet it’s best to pick one that seems totally unrelated to your challenge. ',
             image: 'https://hatrabbits.com/wp-content/uploads/2017/01/random-word-1.jpg',
             comments: [
-                'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
-                'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+                {
+                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    comment:
+                        'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
+                },
+                {
+                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    comment:
+                        'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
+                },
             ],
         },
     ],
@@ -60,6 +85,11 @@ const rootReducer = (state = initState, action) => {
                         return card;
                     }
                 }),
+            };
+
+        case 'cards/resetCard':
+            return {
+                ...initState,
             };
 
         case 'cards/deleteCard':
@@ -90,12 +120,12 @@ const rootReducer = (state = initState, action) => {
                     if (card.id === action.id) {
                         return {
                             ...card,
-                            comments: [ ...card.comments , action.payload],
+                            comments: [...card.comments, { date: action.date, comment: action.payload }],
                         };
                     } else {
                         return card;
                     }
-                })
+                }),
             };
 
         case 'search/searchName':

@@ -12,6 +12,12 @@ export const updateCard = (data) => {
     }
 }
 
+export const resetCard = () => {
+    return {
+        type: 'cards/resetCard',
+    };
+}
+
 export const deleteCard = ({id}) => {
     return {
         type: 'cards/deleteCard',
@@ -32,10 +38,11 @@ export const searchName = (text) => {
     };
 };
 
-export const commentText = ({id}, text) => {
+export const commentText = ({ id, date }, text) => {
     return {
         type: 'cards/comment',
         id: id,
+        date: date,
         payload: text
     }
 }

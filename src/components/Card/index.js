@@ -9,38 +9,36 @@ import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function Card({ id, avatar, name, description, image }) {
+function Card({ cardList }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleRemove = (e) => {
-        e.preventDefault()
-        dispatch(
-            deleteCard({id: id})
-        )
-    }
+        e.preventDefault();
+        dispatch(deleteCard({ id: cardList.id }));
+    };
 
     const handleEdit = (e) => {
-        e.preventDefault()
-        navigate(`/edit/${id}`, { state: { id, avatar, name, description, image } });
-    }
+        e.preventDefault();
+        navigate(`/edit/${cardList.id}`, { state: { cardList } });
+    };
 
     return (
         <div className={cx('card')}>
             <div className={cx('card-header')}>
                 <div className="avatar">
                     <div className={cx('image')}>
-                        <img src={avatar} />
+                        <img src={cardList.avatar} alt="" />
                     </div>
                     <div className={cx('name')}>
-                        <p>{name}</p>
+                        <p>{cardList.name}</p>
                         <span>04/05/2002</span>
                     </div>
                 </div>
                 <div className={cx('right')}>
                     <button onClick={handleEdit}>
                         {/* <Link to={`/edit/${id}`} state={{ id, avatar, name, description, image }}> */}
-                            <FaPencilAlt className={cx('edit')} />
+                        <FaPencilAlt className={cx('edit')} />
                         {/* </Link> */}
                     </button>
                     <button onClick={handleRemove}>
@@ -48,9 +46,9 @@ function Card({ id, avatar, name, description, image }) {
                     </button>
                 </div>
             </div>
-            <div className="description">{description}</div>
+            <div className="description">{cardList.description}</div>
             <div className="card-img">
-                <img src={image} />
+                <img src={cardList.image} alt="" />
             </div>
         </div>
     );

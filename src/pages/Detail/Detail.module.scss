@@ -37,6 +37,10 @@
                 gap: 1rem;
                 color: #f3115e;
                 cursor: pointer;
+
+                svg {
+                    flex-shrink: 0;
+                }
             }
         
             .icon:nth-child(2) {

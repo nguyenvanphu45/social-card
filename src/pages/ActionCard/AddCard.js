@@ -148,11 +148,11 @@ function AddCard() {
                                     <FaUpload className={cx('icon')} />
                                     <span>{image === undefined ? 'Upload image' : image.name}</span>
                                 </label>
-                                {error && image === undefined ? (
+                                {/* {error && image === undefined ? (
                                     <span className={cx('error')}>Image can't be empty</span>
                                 ) : (
                                     ''
-                                )}
+                                )} */}
                             </div>
                         </div>
                     </div>

@@ -102,6 +102,10 @@
             .save {
                 background-color: $main-color;
                 margin-right: 2rem;
+
+                &:first-child {
+                    background-color: #3085d6;
+                }
             }
         }
     }
