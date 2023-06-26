@@ -5,6 +5,7 @@
     
     .header {
         text-align: center;
+        font-weight: 900;
     }
 
     .button {
@@ -19,6 +20,7 @@
             color: $white-txt-color;
             border-radius: $border-radius-2;
             box-shadow: $box-shadow;
+            font-size: 1.2rem;
         }
 
         .revert {
@@ -30,12 +32,13 @@
         }
 
         input {
-            width: 30rem;
+            min-width: 300px;
             border: 1px solid $grey-bg-color;
             outline: none;
             border-radius: $border-radius-2;
             box-shadow: $box-shadow;
             padding: 0 1.4rem;
+            color: #BDBDBD;
         }
 
         .icon {

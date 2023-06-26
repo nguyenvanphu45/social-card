@@ -12,9 +12,10 @@ export const updateCard = (data) => {
     }
 }
 
-export const resetCard = () => {
+export const resetCard = ({id}) => {
     return {
         type: 'cards/resetCard',
+        payload: id
     };
 }
 

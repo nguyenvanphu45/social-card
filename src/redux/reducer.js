@@ -10,12 +10,12 @@ const initState = {
             image: 'https://catscanman.net/wp-content/uploads/2023/02/meme-buon-ngu-2.png',
             comments: [
                 {
-                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    date: new Date('19 Dec 2022 00:12:00 GMT'),
                     comment:
                         'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
                 },
                 {
-                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    date: new Date('19 Dec 2022 00:12:00 GMT'),
                     comment:
                         'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
                 },
@@ -31,12 +31,12 @@ const initState = {
             image: 'https://tiengdong.com/wp-content/uploads/www_tiengdong_com-anh-che-chao-ngay-moi.jpg',
             comments: [
                 {
-                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    date: new Date('19 Dec 2022 00:12:00 GMT'),
                     comment:
                         'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
                 },
                 {
-                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    date: new Date('19 Dec 2022 00:12:00 GMT'),
                     comment:
                         'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
                 },
@@ -51,12 +51,12 @@ const initState = {
             image: 'https://hatrabbits.com/wp-content/uploads/2017/01/random-word-1.jpg',
             comments: [
                 {
-                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    date: new Date('19 Dec 2022 00:12:00 GMT'),
                     comment:
                         'Cảm ơn tất cả các bạn đã đến và ủng hộ Mong mọi người sẽ đón nhận những video tiếp theo của kênh và đừng quên ủng hộ những sản phẩm khác của các thành viên MONSTAR nhé face-red-heart-shape Chúc mọi người có thật nhiều sức khỏe và hạnh phúc ',
                 },
                 {
-                    date: Date.parse('19 Dec 2022 00:12:00 GMT'),
+                    date: new Date('19 Dec 2022 00:12:00 GMT'),
                     comment:
                         'Từ khi nghe demo đã nghiện rr noel ra bài tới giờ là nghe hoài nha trr hãy quãiiii , cảm on anh đã mang tới  1 bài hát hay nv  hi vọng a sẽ sáng tác được thêm nhiều bài hay nữa ',
                 },

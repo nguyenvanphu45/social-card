@@ -1,11 +1,14 @@
 @use '../../scss/' as *;
 
 .card {
-    // max-width: $width-card;
+    max-width: $width-card;
     height: $height-card;
     border-radius: $border-radius-1;
     box-shadow: $box-shadow;
-    padding: 2rem 3rem;
+    padding: 22px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
     .card-header {
         display: flex;

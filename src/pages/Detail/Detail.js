@@ -1,16 +1,33 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect, useState } from 'react';
 import styles from './Detail.module.scss';
 import classNames from 'classnames/bind';
-import { AiFillHeart, AiOutlineComment } from 'react-icons/ai';
-import { useDispatch } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { commentText } from '~/redux/actions';
+import { cardsRemainingSelector } from '~/redux/selectors';
+import HeartIcon from '~/assets/img/heart.svg';
+import MessageIcon from '~/assets/img/message.svg';
 
 const cx = classNames.bind(styles);
 
-function Detail({ props }) {
-    const [countHeart, setCountHeart] = useState(1);
+function Detail() {
+    const [countHeart, setCountHeart] = useState(() => {
+        const savedItem = localStorage.getItem('countHeart');
+        const parsedItem = JSON.parse(savedItem);
+        return parsedItem || 1;
+    });
     const [comment, setComment] = useState('');
-    const cardComments = props.comments;
+    const [error, setError] = useState(false);
+
+    const location = useLocation();
+    const params = useParams();
+    const cardLocation = location.state.cardList;
+
+    const cardLists = useSelector(cardsRemainingSelector);
+    const findId = cardLists.find(({ id }) => id == params.id);
+
+    const cardComments = findId.comments;
     const sortedComments = cardComments.sort((a, b) => b.date - a.date);
 
     const dispatch = useDispatch();
@@ -19,19 +36,27 @@ function Detail({ props }) {
         setCountHeart(countHeart + 1);
     };
 
-    const handlePost = () => {
-        if (comment === '') return;
-        dispatch(
-            commentText(
-                {
-                    id: props.id,
-                    date: Date.now(),
-                },
-                comment,
-            ),
-        );
+    useEffect(() => {
+        localStorage.setItem('countHeart', JSON.stringify(countHeart));
+    }, [countHeart]);
 
-        setComment('');
+    const handlePost = () => {
+        if (comment === '') {
+            setError(true);
+        } else {
+            dispatch(
+                commentText(
+                    {
+                        id: cardLocation.id,
+                        date: new Date(),
+                    },
+                    comment,
+                ),
+            );
+
+            setError(false);
+            setComment('');
+        }
     };
 
     return (
@@ -40,38 +65,43 @@ function Detail({ props }) {
             <div className={cx('body')}>
                 <div className="avatar">
                     <div className={cx('image')}>
-                        <img src={props.avatar} alt="" />
+                        <img src={cardLocation.avatar} alt="" />
                     </div>
                     <div className={cx('name')}>
-                        <p>{props.name}</p>
+                        <p>{cardLocation.name}</p>
                         <span>04/05/2002</span>
                     </div>
                 </div>
-                <div className="description">{props.description}</div>
+                <div className="description">{cardLocation.description}</div>
                 <div className={cx('body-image')}>
-                    <img src={props.image} alt="" />
+                    <img src={cardLocation.image} alt="" />
                 </div>
             </div>
             <div className={cx('bottom')}>
                 <div className={cx('interact')}>
                     <div className={cx('icon')} onClick={handleCountHeart}>
-                        <AiFillHeart />
+                        <img src={HeartIcon} alt="" />
                         <span>{countHeart}</span>
                     </div>
                     <div className={cx('icon')}>
-                        <AiOutlineComment />
+                        <img src={MessageIcon} alt="" />
                         <span>{cardComments.length}</span>
                     </div>
                 </div>
                 <div className={cx('comments')}>
                     <div className={cx('post')}>
-                        <textarea rows="5" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+                        <textarea
+                            className={error && cx('error')}
+                            rows="5"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                        ></textarea>
                         <button onClick={handlePost}>Post</button>
                     </div>
                     {sortedComments.map((sortedComment) => {
                         return (
                             <div className={cx('comment')} key={sortedComment.comment}>
-                                <p>24/12/2022</p>
+                                <p>{sortedComment.date.toLocaleDateString()}</p>
                                 <p>{sortedComment.comment}</p>
                             </div>
                         );
