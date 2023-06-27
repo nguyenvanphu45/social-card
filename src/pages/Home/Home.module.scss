@@ -39,6 +39,10 @@
             box-shadow: $box-shadow;
             padding: 0 1.4rem;
             color: #BDBDBD;
+
+            &:focus {
+                color: #000;
+            }
         }
 
         .icon {

@@ -7,6 +7,7 @@ import Trash from '~/assets/img/trash.svg';
 import Delete from '../Delete';
 import ActionCard from '../ActionCard';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const cx = classNames.bind(styles);
 
@@ -36,6 +37,8 @@ function Card({ cardList }) {
         setOpenModalDelete(false);
     };
 
+    const dateFormat = moment(cardList.date).format('DD/MM/YYYY');
+
     return (
         <div className={cx('card')}>
             <div className={cx('card-header')}>
@@ -45,20 +48,25 @@ function Card({ cardList }) {
                     </div>
                     <div className={cx('name')}>
                         <p>{cardList.name}</p>
-                        <span>04/05/2002</span>
+                        <span>{dateFormat}</span>
                     </div>
                 </div>
                 <div className={cx('right')}>
                     <button onClick={() => setOpenModalEdit(true)}>
                         <img src={Pencil} className={cx('edit')} alt="" />
                     </button>
-                    <Modal isOpen={openModalEdit} onRequestClose={closeModal} style={customStyles}>
+                    <Modal isOpen={openModalEdit} onRequestClose={closeModal} style={customStyles} ariaHideApp={false}>
                         <ActionCard title="EDIT CARD" data={cardList} onClose={closeModal} />
                     </Modal>
                     <button onClick={() => setOpenModalDelete(true)}>
                         <img src={Trash} className={cx('remove')} alt="" />
                     </button>
-                    <Modal isOpen={openModalDelete} onRequestClose={closeModal} style={customStyles}>
+                    <Modal
+                        isOpen={openModalDelete}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        ariaHideApp={false}
+                    >
                         <Delete id={cardList.id} onClose={closeModal} />
                     </Modal>
                 </div>

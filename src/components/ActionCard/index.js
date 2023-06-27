@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FaUpload } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { addCard, updateCard } from '~/redux/actions';
+import { addCard, updateCard, resetCard } from '~/redux/actions';
 import { v4 as uuidv4 } from 'uuid';
-import DefaultImage from '~/assets/img/defaultImage.png'
+import DefaultImage from '~/assets/img/defaultImage.png';
 
 import styles from './Action.module.scss';
 
@@ -44,10 +44,11 @@ function ActionCard({ title, data, onClose }) {
         if (name.length === 0 || description.length === 0 || avatar === undefined) {
             setError(true);
         } else {
-            data === ""
+            data === ''
                 ? dispatch(
                         addCard({
                             id: uuidv4(),
+                            date: new Date(),
                             avatar: avatar,
                             name: name,
                             description: description,
@@ -58,6 +59,7 @@ function ActionCard({ title, data, onClose }) {
                 : dispatch(
                         updateCard({
                             id: data.id,
+                            date: new Date(),
                             avatar: avatar,
                             name: name,
                             description: description,
@@ -74,6 +76,12 @@ function ActionCard({ title, data, onClose }) {
         }
     };
 
+    const handleReset = (e) => {
+        e.preventDefault();
+        dispatch(resetCard({id: data.id}));
+        onClose();
+    }
+
     return (
         <div className={cx('container')}>
             <div className={cx('title')}>
@@ -82,7 +90,7 @@ function ActionCard({ title, data, onClose }) {
             <form onSubmit={handleSubmit}>
                 <div className={cx('form')}>
                     <div className={cx('upload')}>
-                        <label className={cx('input-label', error && avatar === undefined && 'error')}>
+                        <label className={cx('input-label', error && avatar === undefined ? 'error' : '')}>
                             Avatar <span>*</span>
                         </label>
                         <div className={cx('input')}>
@@ -97,13 +105,13 @@ function ActionCard({ title, data, onClose }) {
                         </div>
                     </div>
                     <div className={cx('upload')}>
-                        <label className={error && name.length <= 0 && cx('error')}>
+                        <label className={error && name.length <= 0 ? cx('error') : ''}>
                             Name <span>*</span>
                         </label>
                         <div className={cx('input')}>
                             <input
                                 type="text"
-                                className={error && name.length <= 0 && cx('input-error')}
+                                className={error && name.length <= 0 ? cx('input-error') : ''}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
@@ -111,14 +119,14 @@ function ActionCard({ title, data, onClose }) {
                         </div>
                     </div>
                     <div className={cx('upload')}>
-                        <label className={error && description.length <= 0 && cx('error')}>
+                        <label className={error && description.length <= 0 ? cx('error') : ''}>
                             Description <span>*</span>
                         </label>
                         <div className={cx('input')}>
                             <input
                                 type="text"
                                 value={description}
-                                className={error && description.length <= 0 && cx('input-error')}
+                                className={error && description.length <= 0 ? cx('input-error') : ''}
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                             <span className={cx('error')}></span>
@@ -136,9 +144,8 @@ function ActionCard({ title, data, onClose }) {
                     </div>
                 </div>
                 <div className={cx('btn')}>
-                    <button className={cx('save')}>
-                        Save
-                    </button>
+                    {data && <button className={cx('save')} onClick={handleReset}>Reset</button>}
+                    <button className={cx('save')}>{data ? 'Update' : 'Save'}</button>
                     <button onClick={onClose}>Cancel</button>
                 </div>
             </form>

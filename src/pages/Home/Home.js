@@ -59,7 +59,7 @@ function Home() {
                 <button className={cx('add')} onClick={() => setIsOpen(true)}>
                     Add new
                 </button>
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
+                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} ariaHideApp={false}>
                     <ActionCard title="ADD NEW CARD" data={''} onClose={closeModal} />
                 </Modal>
                 <input type="text" value={search} onChange={handleSearchName} placeholder="Search name ..." />
@@ -71,7 +71,7 @@ function Home() {
             ) : (
                 <div className={cx('cards')}>
                     {cardLists.map((cardList) => (
-                        <Card cardList={cardList} />
+                        <Card cardList={cardList} key={cardList.id} />
                     ))}
                 </div>
             )}
