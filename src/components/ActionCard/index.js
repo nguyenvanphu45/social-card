@@ -53,7 +53,7 @@ function ActionCard({ title, data, onClose }) {
                           name: name,
                           description: description,
                           image: image ? image : `${DefaultImage}`,
-                          comments: [''],
+                          comments: [],
                       }),
                   )
                 : dispatch(

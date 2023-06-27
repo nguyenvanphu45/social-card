@@ -23,7 +23,11 @@ function Detail() {
 
     const [countHeart, setCountHeart] = useLocalStorage(`countHeart_${cardLocation.id}`, 1);
     const [comment, setComment] = useState('');
-    const [comments, setComments] = useLocalStorage(`comments_${cardLocation.id}`, findId.comments);
+    console.log(findId);
+    const [comments, setComments] = useLocalStorage(
+        `comments_${cardLocation.id}`,
+        findId !== undefined ? findId.comments : [],
+    );
     const [error, setError] = useState(false);
 
     // Sort comments newsest

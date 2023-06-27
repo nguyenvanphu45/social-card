@@ -88,7 +88,8 @@
         }
 
         .post {
-            margin-top: 30px;
+            max-width: 800px;
+            margin: 30px auto;
             margin-bottom: 160px;
             position: relative;
 
@@ -101,7 +102,6 @@
             textarea {
                 width: 100%;
                 min-height: 150px;
-                margin-bottom: 1rem;
                 padding: 20px;
                 border-radius: $border-radius-2;
                 font-size: 1.3rem;
