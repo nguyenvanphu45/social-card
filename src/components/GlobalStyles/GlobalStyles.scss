@@ -24,6 +24,7 @@ button {
     border: none;
     outline: none;
     cursor: pointer;
+    font-family: $font-family;
     background-color: $white-txt-color;
 }
 
@@ -36,7 +37,9 @@ a {
     color: $dark-txt-color;
 }
 
-textarea {
+input, textarea {
+    font-family: $font-family;
+    font-size: 1.5rem;
     resize: none;
 }
 
@@ -51,8 +54,8 @@ textarea {
     gap: 1.4rem;
 
     .image {
-        width: 4rem;
-        height: 4rem;
+        width: 5rem;
+        height: 5rem;
 
         img {
             width: 100%;
@@ -62,26 +65,44 @@ textarea {
     }
 
     .name {
-        font-size: 1.4rem;
+        flex: 1;
 
+        .name-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        p {
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+            line-height: 24px;
+        }
+        
         span {
-            color: $grey-txt-color;
+            font-size: 1.5rem;
+            color: #5B7083;
         }
     }
 }
 
 .description {
     min-height: 60px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 300;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .card-img {
-    height: 180px;
+    height: 175px;
 
     img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
     }
 }

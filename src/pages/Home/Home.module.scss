@@ -4,23 +4,24 @@
     padding: 20px 80px;
     
     .header {
+        font-size: 3.5rem;
         text-align: center;
         font-weight: 900;
     }
 
     .button {
-        padding-top: 2rem;
+        padding-top: 3rem;
         display: flex;
         justify-content: flex-end;
         gap: 1.6rem;
         position: relative;
 
         button {
-            padding: 1.2rem 2rem;
+            padding: 15px 30px;
             color: $white-txt-color;
             border-radius: $border-radius-2;
             box-shadow: $box-shadow;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
 
         .revert {
@@ -37,7 +38,7 @@
             outline: none;
             border-radius: $border-radius-2;
             box-shadow: $box-shadow;
-            padding: 0 1.4rem;
+            padding: 0 2rem;
             color: #BDBDBD;
 
             &:focus {
@@ -55,9 +56,9 @@
     }
 
     .cards {
-        margin-top: 4rem;
+        margin-top: 3rem;
         display: grid;
         grid-template-columns: $width-card $width-card $width-card;
-        gap: 3rem 2.5rem;
+        gap: 2.8rem;
     }
 }

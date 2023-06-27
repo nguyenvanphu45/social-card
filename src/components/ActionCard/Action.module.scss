@@ -6,18 +6,21 @@
         background-color: $body-bg;
         border-radius: $border-radius-2;
         box-shadow: $box-shadow;
-        padding: 25px 40px;
+        padding: 25px 45px;
 
         .title {
             text-align: center;
-            font-size: 1.6rem;
+            font-size: 20px;
+            line-height: 27px;
+            font-weight: 700;
         }
 
         .form {
-            padding: 40px 0;
+            padding: 40px 0 26px;
             display: flex;
+            justify-content: center;
             flex-direction: column;
-            gap: 4rem;
+            gap: 2rem;
             border-bottom: 1px solid $grey-bg-color;
 
             .upload {
@@ -25,7 +28,7 @@
                 align-items: center;
 
                 label {
-                    font-size: 1.4rem;
+                    font-size: 1.6rem;
                     font-weight: 400;
                     width: 25%;
 
@@ -35,7 +38,7 @@
                 }
 
                 .error {
-                    color: red;
+                    color: #F3115E;
                 }
 
                 .input {
@@ -55,7 +58,7 @@
                             display: inline-block;
                             width: 100%;
                             padding-left: .5rem;
-                            font-size: 1.2rem;
+                            font-size: 1.6rem;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
@@ -64,21 +67,22 @@
 
                     input {
                         width: 100%;
+                        min-height: 35px;
                         padding: .5rem;
                         border: 1px solid $grey-bg-color;
                         border-radius: 6px;
                     }
 
                     .input-error {
-                        border-color: red;
+                        border-color: #F3115E;
                     }
 
                     .error {
                         font-size: 1.2rem;
-                        color: red;
+                        color: #F3115E;
 
                         .icon {
-                            color: red;
+                            color: #F3115E;
                         }
                     }
                 }
@@ -86,17 +90,21 @@
         }
 
         .btn {
-            padding-top: 1.6rem;
+            padding-top: 20px;
             text-align: right;
 
             button {
-                padding: 1.2rem 1.6rem;
-                border-radius: $border-radius-1;
+                padding: 13px 24px;
+                border-radius: $border-radius-2;
                 color: $white-txt-color;
                 background-color: $grey-bg-color;
 
                 &:hover {
                     opacity: .8;
+                }
+
+                &:last-child {
+                    padding: 13px 18px;
                 }
             }
 
@@ -104,9 +112,10 @@
                 background-color: $main-color;
                 margin-right: 2rem;
 
-                &:first-child {
-                    background-color: #3085d6;
-                }
+            }
+
+            .reset {
+                background-color: #3085d6;
             }
         }
     }

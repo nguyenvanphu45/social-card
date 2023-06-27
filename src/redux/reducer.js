@@ -7,7 +7,7 @@ const initState = {
             avatar: 'https://lh3.googleusercontent.com/fife/APg5EOawo2p44uTEomVCaZqr74zwfu0cZY1WdMTpFmfoBqkYiqM5jwIjoa_bWoSGlKOgU23xMbi9tVDNW9l7qOY-szEIFqPzgylFWbpfMl6eclz9TxG5LwdE2FUZrbjTekuys3Uu3ggiSfgeRojYlflvQUceEDeGdmPr8a-qmrniACj3DmLXvcursYavSyrZjWpVApvYMa6QLtoFMn8J4eycZ3VrGD652yEsVp7aKBaACLwY8pms0k7L4gtS_bRskNa-9jfpMUjJ9BpHrqTnONYJDGmWKDlsWXuVisv-g1SJTvNeLmfKVLmw-Xwr_D-PR_X_rwXJGRm_pfepdoEeaTsbichjHStJpDwkxMPzrgGfECXdPMNXlGd3X-lKfo2U4nZuDEKrsj-LQVZmJbl-QPvvFf4IPXwYRHAoInrWJtUdpzmef-ro1DlywTYMOfe5Y8in-Tj-q7WNMRdXYWqXGRSztEJqPzas7r32CwZZaizgrvxABCdezURztMraM0UY8pGQZJEVUKW_wmVQxE5av4ybvvXWFZaSMsPY9zTiZ618XKbvSAFBCIcroQMO19-6pHilaxmKuXdX4Yp0cORjcx432xRXpXw5-wBWH9WfOGC96-PYnVOZCfpd05fgqkGgSEspPiN_GfkdNVDAhIuP8wJjxgBxfrEBDUif6UbUAa-wJeTk5FIpVylmNqBqfGiADeu-d5FV_KhAOmX7_S31MIeO4p5vcfPUlX3UT4XpRhIojhQSGVkjfqsnqC-5-BVESPDCF1pNKXKpQPcUXfU107Tb6VuuT6a5C0GL53bnCkmjH7MVEDanS5p9lJh7YFbKgFluhet5PK_KJH81pb9vk52xZkpm8i7Hs9Hb-sbVxTk5IWUbQZir71ZjLUxs6fLGDi7H6tgIitD_RUPShw2LRaV9QnQKFurIXdS_KPteAh6hdb791DOlH41r-Fs3xT2jlY_OGCkwfT7_8s2Z6mdw8LdHUCchiuhr9FIJmPSxTe7r-O0o1996eOnHz-k8gepqiwmtgPheuCeuBJv5j1cZQzZ5FSmF5G720xZJoMiawTQxYllMBGlgW9ud8El0gHJemkJcogvPKxhPETIh2UDwgcpcSbEO3iCreZN4tAs42FWBSox57KjUBfNtVbcT_R2l24CiB9a2kx2u507m8476V8s7LEArHqDQ-swcJqHmF-f6xPrIXWkqhkmF6vzKQroOhlH0e3MOJXFMMZxx3murD8WYqZnpedH9MJirqduzZ4F4SDPq6k-hHf-20Ry8-COlP1twXSZexe8bzTkzZMBcbXsilrhFwg_ZNsNcSt4X-CpVb4q1WuDv7PGqqjOIDP2GLmLYZKEVJGox7TST9fA=s64-c',
             name: 'Phu Nguyen',
             description:
-                'Playlist này bài nào cũng rất hay nhưng ít được mọi người biết đến mong mọi người có thể dành chút thời',
+                "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more- or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
             image: 'https://catscanman.net/wp-content/uploads/2023/02/meme-buon-ngu-2.png',
             comments: [
                 {
@@ -94,7 +94,7 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 cards: state.cards.map((card) => {
                     if (card.id === action.payload) {
-                        const findInit = initState.cards.find((init) => init.id === card.id)
+                        const findInit = initState.cards.find((init) => init.id === card.id);
                         return {
                             ...findInit,
                         };

@@ -46,26 +46,26 @@ function ActionCard({ title, data, onClose }) {
         } else {
             data === ''
                 ? dispatch(
-                        addCard({
-                            id: uuidv4(),
-                            date: new Date(),
-                            avatar: avatar,
-                            name: name,
-                            description: description,
-                            image: image ? image : `${DefaultImage}`,
-                            comments: [''],
-                        }),
+                      addCard({
+                          id: uuidv4(),
+                          date: new Date(),
+                          avatar: avatar,
+                          name: name,
+                          description: description,
+                          image: image ? image : `${DefaultImage}`,
+                          comments: [''],
+                      }),
                   )
                 : dispatch(
-                        updateCard({
-                            id: data.id,
-                            date: new Date(),
-                            avatar: avatar,
-                            name: name,
-                            description: description,
-                            image: image,
-                            comments: data.comments,
-                        }),
+                      updateCard({
+                          id: data.id,
+                          date: new Date(),
+                          avatar: avatar,
+                          name: name,
+                          description: description,
+                          image: image,
+                          comments: data.comments,
+                      }),
                   );
             setAvatar();
             setName('');
@@ -78,15 +78,13 @@ function ActionCard({ title, data, onClose }) {
 
     const handleReset = (e) => {
         e.preventDefault();
-        dispatch(resetCard({id: data.id}));
+        dispatch(resetCard({ id: data.id }));
         onClose();
-    }
+    };
 
     return (
         <div className={cx('container')}>
-            <div className={cx('title')}>
-                <h1>{title}</h1>
-            </div>
+            <h1 className={cx('title')}>{title}</h1>
             <form onSubmit={handleSubmit}>
                 <div className={cx('form')}>
                     <div className={cx('upload')}>
@@ -144,7 +142,11 @@ function ActionCard({ title, data, onClose }) {
                     </div>
                 </div>
                 <div className={cx('btn')}>
-                    {data && <button className={cx('save')} onClick={handleReset}>Reset</button>}
+                    {data && (
+                        <button className={cx('save', 'reset')} onClick={handleReset}>
+                            Reset
+                        </button>
+                    )}
                     <button className={cx('save')}>{data ? 'Update' : 'Save'}</button>
                     <button onClick={onClose}>Cancel</button>
                 </div>

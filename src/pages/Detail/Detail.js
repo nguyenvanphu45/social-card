@@ -27,7 +27,7 @@ function Detail() {
     const [error, setError] = useState(false);
 
     // Sort comments newsest
-    const sortedComments = comments.sort((a, b) => b.date - a.date);
+    const sortedComments = comments.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
     const dispatch = useDispatch();
 
@@ -100,10 +100,11 @@ function Detail() {
                 <div className={cx('post')}>
                     <h3>Post a new coment</h3>
                     <textarea
-                        className={error && cx('error')}
+                        className={error ? cx('error') : ''}
                         rows="5"
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
+                        placeholder="Add comment..."
                     ></textarea>
                     <button onClick={handlePost}>Post</button>
                 </div>
