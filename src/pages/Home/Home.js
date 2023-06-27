@@ -60,7 +60,7 @@ function Home() {
                     Add new
                 </button>
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} ariaHideApp={false}>
-                    <ActionCard title="ADD NEW CARD" data={''} onClose={closeModal} />
+                    <ActionCard title="Add new card" data={''} onClose={closeModal} />
                 </Modal>
                 <input type="text" value={search} onChange={handleSearchName} placeholder="Search name ..." />
                 <AiOutlineSearch className={cx('icon')} />

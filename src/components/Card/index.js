@@ -59,7 +59,7 @@ function Card({ cardList }) {
                                     style={customStyles}
                                     ariaHideApp={false}
                                 >
-                                    <ActionCard title="EDIT CARD" data={cardList} onClose={closeModal} />
+                                    <ActionCard title="Edit card" data={cardList} onClose={closeModal} />
                                 </Modal>
                                 <button onClick={() => setOpenModalDelete(true)}>
                                     <img src={Trash} className={cx('remove')} alt="" />

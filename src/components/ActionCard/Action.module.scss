@@ -30,6 +30,7 @@
                 label {
                     font-size: 1.6rem;
                     font-weight: 400;
+                    line-height: 21px;
                     width: 25%;
 
                     span {
@@ -48,6 +49,7 @@
                         cursor: pointer;
                         width: 100%;
                         display: flex;
+                        align-items: center;
                         
                         .icon {
                             color: $main-color;
@@ -59,6 +61,7 @@
                             width: 100%;
                             padding-left: .5rem;
                             font-size: 1.6rem;
+                            line-height: 21px;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
@@ -96,6 +99,7 @@
             button {
                 padding: 13px 24px;
                 border-radius: $border-radius-2;
+                box-shadow: $box-shadow;
                 color: $white-txt-color;
                 background-color: $grey-bg-color;
 

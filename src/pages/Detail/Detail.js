@@ -67,10 +67,10 @@ function Detail() {
                     </div>
                     <div className={cx('name')}>
                         <p>{cardLocation.name}</p>
-                        <span>{dateFormat}</span>
+                        <span>{dateFormat} (day create)</span>
                     </div>
                 </div>
-                <div className="description">{cardLocation.description}</div>
+                <div className={cx('description')}>{cardLocation.description}</div>
                 <div className={cx('body-image')}>
                     <img src={cardLocation.image} alt="" />
                 </div>
