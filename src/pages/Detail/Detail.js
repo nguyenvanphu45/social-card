@@ -3,23 +3,22 @@ import React, { useState } from 'react';
 import styles from './Detail.module.scss';
 import classNames from 'classnames/bind';
 import { useLocation, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { commentText } from '~/redux/actions';
-import { cardsRemainingSelector } from '~/redux/selectors';
 import HeartIcon from '~/assets/img/heart.svg';
 import MessageIcon from '~/assets/img/message.svg';
-import useLocalStorage from '~/components/LocalStorage';
-import moment from 'moment/moment';
+import useLocalStorage from '~/hooks/useLocalStorage';
+import { DateFormat } from '~/utils/dateFormat';
+import { FindId } from '~/utils/findId';
 
 const cx = classNames.bind(styles);
 
 function Detail() {
     const location = useLocation();
     const params = useParams();
-    const cardLocation = location.state.cardList;
+    const cardLocation = location.state.card;
     // Find id to get comments
-    const cardLists = useSelector(cardsRemainingSelector);
-    const findId = cardLists.find(({ id }) => id == params.id);
+    const findId = FindId(params.id);
 
     const [countHeart, setCountHeart] = useLocalStorage(`countHeart_${cardLocation.id}`, 1);
     const [comment, setComment] = useState('');
@@ -58,8 +57,6 @@ function Detail() {
         }
     };
 
-    const dateFormat = moment(cardLocation.date).format('DD/MM/YYYY');
-
     return (
         <div className={cx('container')}>
             <h1 className={cx('header')}>SOCIAL CARD DETAIL</h1>
@@ -70,7 +67,7 @@ function Detail() {
                     </div>
                     <div className={cx('name')}>
                         <p>{cardLocation.name}</p>
-                        <span>{dateFormat} (day create)</span>
+                        <span>{DateFormat(cardLocation)} (day create)</span>
                     </div>
                 </div>
                 <div className={cx('description')}>{cardLocation.description}</div>
@@ -91,10 +88,9 @@ function Detail() {
                 </div>
                 <div className={cx('comments')}>
                     {sortedComments.map((sortedComment, index) => {
-                        const commentDateFormat = moment(sortedComment.date).format('DD/MM/YYYY');
                         return (
                             <div className={cx('comment')} key={index}>
-                                <p>{commentDateFormat} (day create)</p>
+                                <p>{DateFormat(sortedComment.date)} (day create)</p>
                                 <p>{sortedComment.comment}</p>
                             </div>
                         );

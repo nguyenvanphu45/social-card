@@ -12,13 +12,6 @@ export const updateCard = (data) => {
     }
 }
 
-export const resetCard = ({id}) => {
-    return {
-        type: 'cards/resetCard',
-        payload: id
-    };
-}
-
 export const deleteCard = ({id}) => {
     return {
         type: 'cards/deleteCard',

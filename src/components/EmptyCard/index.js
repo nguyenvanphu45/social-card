@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import React from 'react'
 import EmptyImage from '~/assets/img/empty.svg'
-import styles from './Empty.module.scss'
+import styles from './EmptyCard.module.scss'
 
 const cx = classNames.bind(styles);
 
-function Empty() {
+function EmptyCard() {
     return (
         <div className={cx('container')}>
             <img src={EmptyImage} alt="" />
@@ -15,4 +15,4 @@ function Empty() {
     );
 }
 
-export default Empty
+export default EmptyCard

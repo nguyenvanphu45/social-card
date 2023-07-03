@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import { cardsRemainingSelector } from '~/redux/selectors';
 import { searchName, undoDelete } from '~/redux/actions';
 import Card from '~/components/Card';
-import Empty from '~/components/Empty';
+import EmptyCard from '~/components/EmptyCard';
 import ActionCard from '~/components/ActionCard';
 import styles from './Home.module.scss';
 
@@ -33,7 +33,7 @@ function Home() {
     const [search, setSearch] = useState('');
     const [modalIsOpen, setIsOpen] = useState(false);
 
-    const cardLists = useSelector(cardsRemainingSelector);
+    const cards = useSelector(cardsRemainingSelector);
     const dispatch = useDispatch();
 
     const handleSearchName = (e) => {
@@ -66,12 +66,12 @@ function Home() {
                 <AiOutlineSearch className={cx('icon')} />
             </div>
 
-            {cardLists.length === 0 ? (
-                <Empty />
+            {cards.length === 0 ? (
+                <EmptyCard />
             ) : (
                 <div className={cx('cards')}>
-                    {cardLists.map((cardList) => (
-                        <Card cardList={cardList} key={cardList.id} />
+                    {cards.map((card) => (
+                        <Card card={card} key={card.id} />
                     ))}
                 </div>
             )}

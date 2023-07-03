@@ -4,10 +4,10 @@ import classNames from 'classnames/bind';
 import Modal from 'react-modal';
 import Pencil from '~/assets/img/pencil.svg';
 import Trash from '~/assets/img/trash.svg';
-import Delete from '../Delete';
+import DeleteCard from '../DeleteCard';
 import ActionCard from '../ActionCard';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+import { DateFormat } from '~/utils/dateFormat';
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +28,7 @@ const customStyles = {
     },
 };
 
-function Card({ cardList }) {
+function Card({ card }) {
     const [openModalEdit, setOpenModalEdit] = useState(false);
     const [openModalDelete, setOpenModalDelete] = useState(false);
 
@@ -37,18 +37,16 @@ function Card({ cardList }) {
         setOpenModalDelete(false);
     };
 
-    const dateFormat = moment(cardList.date).format('DD/MM/YYYY');
-
     return (
         <div className={cx('card')}>
             <div className={cx('card-header')}>
                 <div className="avatar">
                     <div className={cx('image')}>
-                        <img src={cardList.avatar} alt="" />
+                        <img src={card.avatar} alt="" />
                     </div>
                     <div className={cx('name')}>
                         <div className={cx('name-top')}>
-                            <p>{cardList.name}</p>
+                            <p>{card.name}</p>
                             <div className={cx('right')}>
                                 <button onClick={() => setOpenModalEdit(true)}>
                                     <img src={Pencil} className={cx('edit')} alt="" />
@@ -59,7 +57,7 @@ function Card({ cardList }) {
                                     style={customStyles}
                                     ariaHideApp={false}
                                 >
-                                    <ActionCard title="Edit card" data={cardList} onClose={closeModal} />
+                                    <ActionCard title="Edit card" data={card} onClose={closeModal} />
                                 </Modal>
                                 <button onClick={() => setOpenModalDelete(true)}>
                                     <img src={Trash} className={cx('remove')} alt="" />
@@ -70,18 +68,18 @@ function Card({ cardList }) {
                                     style={customStyles}
                                     ariaHideApp={false}
                                 >
-                                    <Delete id={cardList.id} onClose={closeModal} />
+                                    <DeleteCard id={card.id} onClose={closeModal} />
                                 </Modal>
                             </div>
                         </div>
-                        <span>{dateFormat}</span>
+                        <span>{DateFormat(card.date)}</span>
                     </div>
                 </div>
             </div>
-            <div className="description">{cardList.description}</div>
-            <Link to={`/detail/${cardList.id}`} state={{ cardList }} key={cardList.id}>
+            <div className="description">{card.description}</div>
+            <Link to={`/detail/${card.id}`} state={{ card }} key={card.id}>
                 <div className="card-img">
-                    <img src={cardList.image} alt="" />
+                    <img src={card.image} alt="" />
                 </div>
             </Link>
         </div>

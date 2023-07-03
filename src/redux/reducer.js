@@ -89,21 +89,6 @@ const rootReducer = (state = initState, action) => {
                 }),
             };
 
-        case 'cards/resetCard':
-            return {
-                ...state,
-                cards: state.cards.map((card) => {
-                    if (card.id === action.payload) {
-                        const findInit = initState.cards.find((init) => init.id === card.id);
-                        return {
-                            ...findInit,
-                        };
-                    } else {
-                        return card;
-                    }
-                }),
-            };
-
         case 'cards/deleteCard':
             return {
                 ...state,

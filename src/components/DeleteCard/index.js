@@ -3,12 +3,12 @@ import classNames from 'classnames/bind';
 
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '~/redux/actions';
-import styles from './Delete.module.scss';
+import styles from './DeleteCard.module.scss';
 import Trash from '~/assets/img/trash.svg';
 
 const cx = classNames.bind(styles);
 
-function Delete({ id, onClose }) {
+function DeleteCard({ id, onClose }) {
     const dispatch = useDispatch();
 
     const handleRemove = (e) => {
@@ -34,4 +34,4 @@ function Delete({ id, onClose }) {
     );
 }
 
-export default Delete;
+export default DeleteCard;
