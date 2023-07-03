@@ -66,7 +66,7 @@ function Home() {
                 <AiOutlineSearch className={cx('icon')} />
             </div>
 
-            {cards.length === 0 ? (
+            {!cards.length ? (
                 <EmptyCard />
             ) : (
                 <div className={cx('cards')}>

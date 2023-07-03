@@ -24,7 +24,7 @@ function Detail() {
     const [comment, setComment] = useState('');
     const [comments, setComments] = useLocalStorage(
         `comments_${cardLocation.id}`,
-        findId !== undefined ? findId.comments : [],
+        findId ? findId.comments : [],
     );
     const [error, setError] = useState(false);
 
@@ -38,7 +38,7 @@ function Detail() {
     };
 
     const handlePost = () => {
-        if (comment === '') {
+        if (!comment) {
             setError(true);
         } else {
             dispatch(

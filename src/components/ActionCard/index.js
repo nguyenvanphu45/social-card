@@ -21,7 +21,7 @@ function ActionCard({ title, data, onClose }) {
 
     const handleAvatar = (e) => {
         const file = e.target.files[0];
-        if (file === undefined) {
+        if (!file) {
             setError(true);
         } else {
             file.preview = URL.createObjectURL(file);
@@ -31,7 +31,7 @@ function ActionCard({ title, data, onClose }) {
 
     const handleImage = (e) => {
         const file = e.target.files[0];
-        if (file === undefined) {
+        if (!file) {
             setError(true);
         } else {
             file.preview = URL.createObjectURL(file);
